@@ -1,0 +1,211 @@
+/* ------------------ RESET ------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ------------------ BODY ------------------ */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #eaeaea;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ------------------ TITLE ------------------ */
+.title {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00ffd5;
+    letter-spacing: 2px;
+}
+
+/* ------------------ HEADING ------------------ */
+.heading {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.heading h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.heading h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #b0c7d1;
+}
+
+/* ------------------ MAIN CONTAINER ------------------ */
+.container {
+    margin-top: 40px;
+    width: 90%;
+    max-width: 1100px;
+    height: 540px;                 /* FIXED SIZE */
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    backdrop-filter: blur(10px);
+    margin: 40px auto 60px auto;   /* TOP | AUTO | BOTTOM */
+}
+
+
+/* ------------------ RIGHT CONTAINER ------------------ */
+.right_container,
+.left_container {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    padding: 20px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;   /* prevents double scrollbars */
+}
+
+
+.left_container h2 {
+    margin-bottom: 15px;
+    color: #7ee8fa;
+}
+
+/* ------------------ TASK LIST ------------------ */
+.task_list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;              /* fills available height */
+    overflow-y: auto;
+    padding-right: 8px;
+    max-height: 100%;
+    padding-bottom: 15px;
+}
+
+/* Custom scrollbar */
+
+/* Chrome, Edge, Safari */
+.task_list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.task_list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.task_list::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00ffd5, #00c9aa);
+    border-radius: 10px;
+}
+
+.task_list::-webkit-scrollbar-thumb:hover {
+    background: #00c9aa;
+}
+
+.show_task {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.show_task h3 {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ------------------ BUTTONS ------------------ */
+.show_task button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.show_task button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.delete {
+    color: #ff6b6b;
+}
+
+.edit {
+    color: #feca57;
+}
+
+.done {
+    color: #1dd1a1;
+}
+
+/* ------------------ ADD TASK ------------------ */
+.add_task {
+    grid-column: span 2;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.add_task input {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.add_task input::placeholder {
+    color: #777;
+}
+
+.add_btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    background: #00ffd5;
+    color: #003333;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add_btn:hover {
+    background: #00c9aa;
+    transform: scale(1.05);
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .add_task {
+        grid-column: span 1;
+    }
+}
