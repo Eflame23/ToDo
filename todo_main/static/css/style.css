@@ -165,8 +165,14 @@ body {
     gap: 10px;
 }
 
+.add_task form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 
-.add_task input {
+.add_task form input {
     width: 100%;
     max-width: 500px;
     padding: 15px 20px;
@@ -178,7 +184,7 @@ body {
     color: #333;
 }
 
-.add_task input::placeholder {
+.add_task form input::placeholder {
     color: #777;
 }
 

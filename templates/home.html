@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ToDo App</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -23,27 +23,34 @@
     <div class="container">
         <div class="right_container">
             <div class="task_list">
+                {% for task in tasks %}
                 <div class="show_task">
-                    <h3>This is some task</h3>
+                    <h3>{{task}}</h3>
                     <button class="done"><i class="fa-solid fa-check"></i></button>
                     <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
                     <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>
                 </div>
+                {% endfor %}
             </div>
         </div>
         <div class="left_container">
             <h2>Completed Task</h2>
             <div class="task_list">
+                {% for c_task in c_tasks %}
                 <div class="show_task">
-                    <h3>This is some completed task</h3>
+                    <h3>{{c_task}}</h3>
                 </div>
+                {% endfor %}
             </div>
         </div>
         <div class="add_task">
-            <input type="text" placeholder="Add a task here..." />
-            <button class="add_btn">
-                <i class="fa-solid fa-plus"></i>
-            </button>
+            <form action="{% url 'addTask' %}" method="POST">
+                {% csrf_token %}
+                <input name="task" type="text" placeholder="Add a task here..." />
+                <button type="submit" class="add_btn">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </form>
         </div>
         
     </div>
