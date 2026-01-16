@@ -1,14 +1,16 @@
 # 📝 ToDo App — Django Web Application
 
-A Django-based ToDo application designed to practice real-world web development concepts such as CRUD operations, server-side rendering, and clean frontend–backend separation.  
-The project features inline task editing using a popup modal, avoiding unnecessary page navigation and improving user experience.
+A Django-based ToDo application built to practice real-world web development concepts such as CRUD operations, server-side rendering, and clean separation between frontend and backend logic.
+
+The application includes **inline task editing using a popup modal**, allowing users to update tasks without navigating to a new page, resulting in a smoother and more modern user experience.
 
 ---
 
 ## 🔍 Problem Statement
 
-Most beginner ToDo applications rely on multiple pages for simple operations like editing tasks, leading to poor user experience and redundant navigation.  
-This project addresses that by implementing popup-based task editing while keeping backend logic clean and simple.
+Many beginner-level ToDo applications rely on multiple pages for basic actions such as editing tasks. This leads to unnecessary navigation, poor user experience, and tightly coupled UI and backend logic.
+
+This project addresses that problem by implementing **popup-based task editing** while keeping the backend logic simple, readable, and scalable.
 
 ---
 
@@ -16,7 +18,7 @@ This project addresses that by implementing popup-based task editing while keepi
 
 - Built a single-page task dashboard using Django templates  
 - Implemented popup-based task editing using JavaScript and CSS  
-- Used Django views strictly for data handling, not UI state  
+- Used Django views strictly for data handling and database updates  
 - Maintained a clear separation between UI logic, styling, and backend logic  
 
 ---
@@ -25,9 +27,9 @@ This project addresses that by implementing popup-based task editing while keepi
 
 - Add new tasks  
 - Mark tasks as completed  
-- Separate lists for pending and completed tasks  
-- Edit tasks using a modal popup (no new edit page)  
-- Persistent storage using SQLite  
+- View pending and completed tasks in separate sections  
+- Edit tasks using a modal popup (no separate edit page)  
+- Persistent data storage using SQLite  
 - Clean, dark-themed user interface  
 
 ---
@@ -38,79 +40,108 @@ This project addresses that by implementing popup-based task editing while keepi
 - Django Template Language (DTL)  
 - POST-based form handling  
 - Hidden form fields for object identification  
-- JavaScript-driven UI state (modal open/close)  
+- JavaScript-driven UI interactions (popup open/close)  
 - CSS Flexbox and Grid for layout  
-- Defensive template rendering using `escapejs`  
+- Safe template-to-JavaScript data handling using `escapejs`  
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer    | Technology            |
-|----------|-----------------------|
-| Backend  | Django                |
+| Layer | Technology |
+|------|------------|
+| Backend | Django |
 | Frontend | HTML, CSS, JavaScript |
-| Database | SQLite                |
-| Styling  | Custom CSS            |
-| Icons    | Font Awesome          |
+| Database | SQLite |
+| Styling | Custom CSS |
+| Icons | Font Awesome |
 
 ---
 
-ARCHITECTURE & FLOW – TODO APP (DJANGO)
+## ▶️ How to Run This Project Locally
 
-The application follows a simple request–response architecture.
-Django handles all backend logic and database operations, while
-JavaScript is used only for UI interactions such as opening and
-closing the edit popup.
+Follow these steps to download and run the project on your system.
 
-------------------------------------------------------------
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+```
 
-## 🧩 APPLICATION FLOW
+### 2. Navigate to the Project Folder
+```bash
+cd ToDo-App
+```
 
-User opens the application
-|
-v
-Django view fetches pending and completed tasks from the database
-|
-v
-Tasks are rendered on the homepage using Django templates
-|
-v
-User performs actions:
+### 3. Create a Virtual Environment
+```bash
+python -m venv env
+```
 
-- Add Task
-  -> Form POST request
-  -> Task saved in database
-  -> Redirect to home page
+### 4. Activate the Virtual Environment
 
-- Mark Task as Done
-  -> Request sent with task ID
-  -> Task status updated in database
-  -> Redirect to home page
+Windows
+```bash
+env\Scripts\activate
+```
 
-- Edit Task
-  -> Edit button clicked
-  -> Popup modal opens (handled by JavaScript)
-  -> User submits edited task
-  -> Form POST request with task ID and updated text
-  -> Task updated in database
-  -> Redirect to home page
+macOS / Linux
+```bash
+source env/bin/activate
+```
 
-|
-v
-Updated task lists are displayed after page refresh
+### 5. Install Dependencies
+```bash
+pip install django
+```
 
-------------------------------------------------------------
+### 6. Apply Database Migrations
+```bash
+python manage.py migrate
+```
 
-### ARCHITECTURAL PRINCIPLES
+### 7. Start the Development Server
+```bash
+python manage.py runserver
+```
 
-- Django manages data storage, business logic, and routing
-- Templates handle server-side HTML rendering
-- JavaScript is used only for UI behavior (popup open/close)
-- POST requests are used for all data-modifying actions
-- Page refresh resets UI state after each operation
+### 8. Open in Browser
+```bash
+http://127.0.0.1:8000/
+```
 
-This design keeps the application simple, predictable,
-easy to debug, and scalable for future improvements.
+---
 
+### 📌 Learning Outcomes
 
+Built a complete CRUD-based web application using Django
+
+Gained practical experience with Django templates and views
+
+Learned how to manage UI behavior using JavaScript without frameworks
+
+Understood form handling, POST requests, and redirects
+
+Debugged common Django errors such as NoReverseMatch
+
+Improved understanding of frontend–backend separation
+
+---
+
+### 🔮 Future Improvements
+
+AJAX-based editing (no page refresh)
+
+User authentication
+
+Task prioritization and due dates
+
+REST API version of the application
+
+Improved mobile responsiveness
+
+---
+
+### 👤 Author
+
+Eshan Manoj
+B.Tech Student | Aspiring Software Engineer
