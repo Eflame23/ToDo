@@ -143,5 +143,5 @@ Improved mobile responsiveness
 
 ### 👤 Author
 
-Eshan Manoj
+Eshan Manoj | 
 B.Tech Student | Aspiring Software Engineer
