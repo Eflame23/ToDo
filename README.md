@@ -56,34 +56,61 @@ This project addresses that by implementing popup-based task editing while keepi
 
 ---
 
-## 🧩 Architecture & Flow
+ARCHITECTURE & FLOW – TODO APP (DJANGO)
 
+The application follows a simple request–response architecture.
+Django handles all backend logic and database operations, while
+JavaScript is used only for UI interactions such as opening and
+closing the edit popup.
 
-User opens application
-↓
-Django view fetches pending and completed tasks from database
-↓
-Tasks rendered on homepage using Django templates
-↓
-User actions:
-• Add Task → form POST → task saved → redirect home
-• Mark Done → request sent → task status updated → redirect home
-• Edit Task → popup modal opens → form POST → task updated → redirect home
-↓
-Updated task lists displayed on page refresh
+------------------------------------------------------------
 
+## 🧩 APPLICATION FLOW
 
+User opens the application
+|
+v
+Django view fetches pending and completed tasks from the database
+|
+v
+Tasks are rendered on the homepage using Django templates
+|
+v
+User performs actions:
 
-### 🏗️ Architectural Principles
+- Add Task
+  -> Form POST request
+  -> Task saved in database
+  -> Redirect to home page
 
-- Django handles **data storage and business logic**
-- Templates handle **HTML rendering**
-- JavaScript is used only for **UI interactions (modal open/close)**
-- Page refresh ensures UI state resets cleanly after each action
+- Mark Task as Done
+  -> Request sent with task ID
+  -> Task status updated in database
+  -> Redirect to home page
 
-This structure keeps the application:
-- Simple
-- Predictable
-- Easy to debug
-- Scalable for future features
+- Edit Task
+  -> Edit button clicked
+  -> Popup modal opens (handled by JavaScript)
+  -> User submits edited task
+  -> Form POST request with task ID and updated text
+  -> Task updated in database
+  -> Redirect to home page
+
+|
+v
+Updated task lists are displayed after page refresh
+
+------------------------------------------------------------
+
+### ARCHITECTURAL PRINCIPLES
+
+- Django manages data storage, business logic, and routing
+- Templates handle server-side HTML rendering
+- JavaScript is used only for UI behavior (popup open/close)
+- POST requests are used for all data-modifying actions
+- Page refresh resets UI state after each operation
+
+This design keeps the application simple, predictable,
+easy to debug, and scalable for future improvements.
+
 
