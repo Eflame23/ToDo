@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo - edit task</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="title">
+        <h1>ToDo App - Edit Task</h1>
+    </div>
+
+    <div class="container" style="display: flex; flex-direction: column; height: 100vh; justify-content: center; align-items: center;">
+
+        <form action="{% url 'editTask' get_task.pk %}" method="POST" style=" justify-content: center; align-items: center;">
+            {% csrf_token %}
+            <input value="{{ get_task.task }}" name="task" type="text" placeholder="Add a task here..." style="height: 50px; width: 300px; padding: 20px;"/>
+            <button type="submit" class="add_btn">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

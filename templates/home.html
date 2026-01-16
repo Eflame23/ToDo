@@ -22,14 +22,28 @@
     </div>
     <div class="container">
         <div class="right_container">
+            <h2>Incomplete Task</h2>
             <div class="task_list">
                 {% for task in tasks %}
                 <div class="show_task">
-                    <h3>{{task}}</h3>
-                    <button class="done"><i class="fa-solid fa-check"></i></button>
-                    <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <h3>{{ task }}</h3>
+                
+                    <!-- DONE -->
+                    <a href="{% url 'mark_as_done' task.pk %}" class="action-btn done">
+                        <i class="fa-solid fa-check"></i>
+                    </a>
+                
+                    <!-- DELETE -->
+                    <a href="{% url 'deleteTask' task.pk %}" class="action-btn delete">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                
+                    <!-- EDIT -->
+                    <a onclick="openModal('{{task.pk}}','{{task.task|escapejs}}')" class="action-btn edit">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
                 </div>
+                
                 {% endfor %}
             </div>
         </div>
@@ -38,8 +52,11 @@
             <div class="task_list">
                 {% for c_task in c_tasks %}
                 <div class="show_task">
-                    <h3>{{c_task}}</h3>
-                </div>
+                    <h3>{{ c_task }}</h3>
+                    <a href="{% url 'mark_as_undone' c_task.pk %}" class="action-btn undo">
+                        <i class="fa-solid fa-xmark"></i>
+                    </a>
+                </div>                
                 {% endfor %}
             </div>
         </div>
@@ -54,5 +71,46 @@
         </div>
         
     </div>
+    <div id="editmodal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Task</h2>
+
+            <form action="{% url 'editTask' %}" method="POST">
+                {% csrf_token %}
+                
+                <!-- hidden to store task id -->
+                <input type="hidden" name="task_id" id="editTaskId">
+
+                <!-- task text here -->
+                <input type="text" name="task" id="editTaskInput" value="{{get_task.task}}" required>
+
+                <div class="modal-actions">
+                    <button type="button" class="modal-cancel-btn" onclick="closeModal()">
+                        Cancel
+                    </button>
+                
+                    <button type="submit" class="modal-save-btn">
+                        Save
+                    </button>
+                </div>
+                
+
+            </form>
+
+        </div>
+    </div>
+    <script>
+        function openModal(taskId,taskText){
+            //Put task id into hidden input
+            document.getElementById('editTaskId').value = taskId;
+            //Put task text into text input
+            document.getElementById('editTaskInput').value = taskText;
+            //Show the popup
+            document.getElementById('editmodal').style.display = 'flex';
+        }
+        function closeModal(){
+            document.getElementById('editmodal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
